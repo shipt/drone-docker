@@ -60,9 +60,6 @@ steps:
     password:
       from_secret: harbor_drone_pass
     env_file: "docker_args"
-  volumes:
-    - name: docker-sock
-      path: /var/run/docker.sock
   when:
     event:
       exclude:
@@ -74,7 +71,3 @@ trigger:
   - "refs/tags/**"
   - "refs/pull/**"
 
-volumes:
-  - name: docker-sock
-    host:
-      path: /var/run/docker.sock
